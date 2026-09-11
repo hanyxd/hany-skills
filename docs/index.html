@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Skill Library — 156 Skills</title>
+<meta name="description" content="A curated library of 156 Hermes Agent skills across web, creative, security, DevOps, research, and productivity. Includes the web-mode website-builder orchestrator.">
+<style>
+  :root{
+    --bg:#0b0d10; --surface:#11151b; --surface2:#161b22;
+    --text:#e6edf3; --muted:#8b949e; --border:#21262d;
+    --accent:#4c1fff; --accent2:#7c3aed; --good:#3fb950;
+    --mono:"SFMono-Regular",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  /* ---------- HERO / Decide-Learn: ONE idea per section ---------- */
+  header.hero{padding:96px 0 64px;border-bottom:1px solid var(--border)}
+  .kicker{color:var(--accent2);font:600 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+  h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;max-width:18ch}
+  h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);font-size:1.15rem;max-width:56ch;margin:20px 0 32px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.15s}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.primary:hover{background:var(--accent2)}
+  .btn.ghost{border:1px solid var(--border);color:var(--text)}
+  .btn.ghost:hover{border-color:var(--muted);background:var(--surface)}
+  .stats{display:flex;gap:48px;margin-top:56px;flex-wrap:wrap}
+  .stat b{font-size:2rem;font-weight:800;display:block;line-height:1}
+  .stat span{color:var(--muted);font-size:.85rem}
+  /* ---------- Sections ---------- */
+  section{padding:72px 0;border-bottom:1px solid var(--border)}
+  h2{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+  .lead{color:var(--muted);max-width:60ch;margin-bottom:32px}
+  /* ---------- Feature: web-mode spotlight ---------- */
+  .spot{background:linear-gradient(135deg,rgba(76,31,255,.12),rgba(124,58,237,.05));border:1px solid var(--accent2);border-radius:16px;padding:28px}
+  .spot .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:var(--mono);font-size:.85rem;color:var(--muted);margin-top:16px}
+  .spot .flow .step{color:var(--text);background:var(--surface2);padding:6px 12px;border-radius:6px;border:1px solid var(--border)}
+  /* ---------- Category grid ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;transition:.15s}
+  .card:hover{border-color:var(--accent2);transform:translateY(-2px)}
+  .card h3{font-size:1.02rem;font-weight:700;margin-bottom:6px}
+  .card p{color:var(--muted);font-size:.88rem}
+  .card .n{display:inline-block;font:600 11px var(--mono);color:var(--accent2);background:rgba(124,58,237,.12);padding:2px 8px;border-radius:20px;margin-bottom:10px}
+  /* ---------- Footer ---------- */
+  footer{padding:40px 0;color:var(--muted);font-size:.85rem}
+  footer a{color:var(--text)}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  @media(max-width:640px){header.hero{padding:64px 0 48px}.stats{gap:28px}.stat b{font-size:1.5rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Hermes Agent · Skill Library</div>
+    <h1>A library of <span class="grad">156 skills</span> to run any job.</h1>
+    <p class="sub">Web, creative, security, DevOps, research, and productivity — one version-controlled repo, documented and ready to deploy into any Hermes Agent install.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/hanyxd/hany-skills">View on GitHub →</a>
+      <a class="btn ghost" href="docs/CATALOG.md">Browse the catalog</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>156</b><span>skills</span></div>
+      <div class="stat"><b>15</b><span>categories</span></div>
+      <div class="stat"><b>72</b><span>backend/dev skills</span></div>
+      <div class="stat"><b>54</b><span>design systems</span></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Featured: <code>web-mode</code></h2>
+    <p class="lead">A single skill that drives the whole website pipeline end-to-end — scoping, design, build, QA, and deploy — delegating each stage to the best specialist skill instead of recreating it.</p>
+    <div class="spot">
+      <p>One orchestrator. Five phases. The design is non-generic by construction — it commits to a surface archetype before writing any tokens, and runs an anti-slop self-audit before shipping.</p>
+      <div class="flow">
+        <span class="step">1 · Scope</span><span>→</span>
+        <span class="step">2 · Design</span><span>→</span>
+        <span class="step">3 · Build</span><span>→</span>
+        <span class="step">4 · QA</span><span>→</span>
+        <span class="step">5 · Deploy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>By category</h2>
+    <p class="lead">Every skill is searchable in the full catalog. Here are the areas it covers.</p>
+    <div class="grid">
+      <div class="card"><span class="n">Web</span><h3>web-mode · deploy · harness</h3><p>End-to-end site building, free deployment, and a CDP browser harness.</p></div>
+      <div class="card"><span class="n">Creative</span><h3>Design · video · art</h3><p>claude-design, 54 design systems, manim, p5.js, infographics, ASCII video.</p></div>
+      <div class="card"><span class="n">AI agents</span><h3>Delegate & coordinate</h3><p>hermes-agent, codex, claude-code, opencode, computer-use, browser CDP.</p></div>
+      <div class="card"><span class="n">Backend</span><h3>FastAPI · Kotlin · DB</h3><p>API endpoint creators, database patterns, layered architecture, testing.</p></div>
+      <div class="card"><span class="n">Security</span><h3>Audit & harden</h3><p>JS/NPM security audit, Terraform security audit, backend security checklist.</p></div>
+      <div class="card"><span class="n">DevOps</span><h3>Terraform · CI/CD</h3><p>5 Terraform skills, CI/CD patterns, service debugging, on-call logs.</p></div>
+      <div class="card"><span class="n">Research</span><h3>Deep-dive & cite</h3><p>deep-research, arxiv, market research, grounded citations, RSS monitoring.</p></div>
+      <div class="card"><span class="n">Productivity</span><h3>Documents & apps</h3><p>docx, pdf, xlsx, pptx, Google Workspace, Notion, Airtable, maps, OCR.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Get started</h2>
+    <p class="lead">Clone once, deploy into any Hermes agent.</p>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;font-family:var(--mono);font-size:.9rem;overflow-x:auto">
+<pre style="white-space:pre">git clone https://github.com/hanyxd/hany-skills.git
+mkdir -p ~/.hermes/skills
+cp -r hany-skills/skills/* ~/.hermes/skills/</pre>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><a href="https://github.com/hanyxd/hany-skills">hany-skills</a> · MIT · Built with the <code>web-mode</code> skill</p>
+  </div>
+</footer>
+
+</body>
+</html>

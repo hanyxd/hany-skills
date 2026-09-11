@@ -1,0 +1,234 @@
+# Skill Catalog
+
+**156 skills** across 15 categories, version-controlled for backup and portability.
+
+## core — 7
+
+| Skill | What it does |
+|---|---|
+| `pov-explainer-videos` | POV life-story explainer scripts + faceless mascot videos. |
+| `prism-3way` | Three orthogonal analytical operations (WHERE/WHEN/WHY) + cross-operation synthesis. Each operation attacks the problem from a fundamentally different angle. The disagreements between the three ARE the valuable output. Works on any domain — code, business, strategy, design, text. |
+| `prism-discover` | Discover all possible analysis domains for an artifact. Finds obvious and non-obvious angles — architecture, security, but also marketing positioning, user psychology, regulatory implications, teaching value. Use before prism-scan or prism-full to explore what's worth investigating. |
+| `prism-full` | Full Prism: multi-pass structural analysis with mandatory adversarial self-correction. Designs custom analytical passes, executes them with chaining, then attacks its own findings before synthesizing. Use for maximum depth on important code or artifacts. |
+| `prism-reflect` | Constraint transparency: analyzes an artifact structurally, then analyzes what its own analysis concealed. Produces a conservation law AND a constraint report showing what was maximized, what was sacrificed, and what to investigate next. The only AI skill that knows what it can't see. |
+| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements |
+| `using-superpowers` | Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions |
+
+## web — 4
+
+| Skill | What it does |
+|---|---|
+| `blocked-page-recovery` | Use when a fetch fails: 403/429, paywall, WAF, bot wall. |
+| `hermes-browser-exec` | Use when driving Hermes browser_exec: launch/connect/login. |
+| `static-site-deployment` | Use when deploying a static site free via Hermes MCP. |
+| `web-mode` | Use when building websites. Plan, design, build, QA, deploy. |
+
+## creative — 12
+
+| Skill | What it does |
+|---|---|
+| `architecture-diagram` | Dark-themed SVG architecture/cloud/infra diagrams as HTML. |
+| `ascii-video` | ASCII video: convert video/audio to colored ASCII MP4/GIF. |
+| `baoyu-infographic` | Infographics: 21 layouts x 21 styles (信息图, 可视化). |
+| `blender-mcp` | Use when the user is working in Blender. |
+| `claude-design` | Design one-off HTML artifacts (landing, deck, prototype). |
+| `design-md` | Author/validate/export Google's DESIGN.md token spec files. |
+| `humanizer` | Humanize text: strip AI-isms and add real voice. |
+| `manim-video` | Manim CE animations: 3Blue1Brown math/algo videos. |
+| `p5js` | p5.js sketches: gen art, shaders, interactive, 3D. |
+| `personal-portfolio-site` | Build the user's personal about/resume web pages. |
+| `popular-web-designs` | 54 real design systems (Stripe, Linear, Vercel) as HTML/CSS. |
+| `songwriting-and-ai-music` | Songwriting craft and Suno AI music prompts. |
+
+## autonomous-ai-agents — 6
+
+| Skill | What it does |
+|---|---|
+| `browser-exec-cdp` | Use when browser_exec fails: launch Chromium + BU_CDP_URL. |
+| `claude-code` | Delegate coding to Claude Code CLI (features, PRs). |
+| `codex` | Delegate coding to OpenAI Codex CLI (features, PRs). |
+| `computer-use` | Drive the desktop background-first; escalate on signal. |
+| `hermes-agent` | Use, configure, theme, extend, and orchestrate Hermes Agent. |
+| `opencode` | Delegate coding to OpenCode CLI (features, PR review). |
+
+## software-development — 16
+
+| Skill | What it does |
+|---|---|
+| `api-retry` | API error? Retry up to 10 times with exponential backoff. |
+| `arch-system-cleanup` | Use when freeing disk space or cleaning caches on Arch. |
+| `codebase-inspection` | Inspect codebases w/ pygount: LOC, languages, ratios. |
+| `dogfood` | Exploratory QA of web apps: find bugs, evidence, reports. |
+| `github` | GitHub via gh CLI: PRs, issues, reviews, repos, auth. |
+| `hermes-agent-skill-authoring` | Author in-repo SKILL.md files: frontmatter and structure. |
+| `inspecting-hermes-desktop-dom` | Read the live Hermes desktop DOM/CSS over CDP. |
+| `node-inspect-debugger` | Debug Node.js via --inspect + Chrome DevTools Protocol CLI. |
+| `npm-native-builds` | Use when an npm native binding (sharp) fails to build. |
+| `python-debugpy` | Debug Python: pdb REPL + debugpy remote (DAP). |
+| `requesting-code-review` | Pre-commit review: security scan, quality gates, auto-fix. |
+| `rofi-desktop-menus` | Use when building or fixing rofi launcher menus on Linux. |
+| `simplify-code` | Parallel 4-agent cleanup of recent code changes. |
+| `spike` | Throwaway experiments to validate an idea before build. |
+| `systematic-debugging` | 4-phase root cause debugging: understand bugs before fixing. |
+| `test-driven-development` | TDD: enforce RED-GREEN-REFACTOR, tests before code. |
+
+## claude-code-imports — 72
+
+| Skill | What it does |
+|---|---|
+| `api-endpoint-creator` | Creates RPC-style endpoint following layered architecture (Controller → Manager → Repository). Use when creating new API endpoints or CRUD operations. |
+| `article-writing` | Write blog posts, guides, tutorials, and long-form content. Sounds like a real person, not AI. Use when the user wants polished written content. |
+| `backend-api-design` | Design RPC-style APIs with layered architecture (Controller → Manager → Repository). Use when creating new API endpoints, designing API contracts, or reviewing API patterns. |
+| `banner-design` | Design banners for social media, ads, website heroes, creative assets, and print. Multiple art direction options with AI-generated visuals. Actions: design, create, generate banner. Platforms: Facebook, Twitter/X, LinkedIn, YouTube, Instagram, Google Display, website hero, print. Styles: minimalist, gradient, bold typography, photo-based, illustrated, geometric, retro, glassmorphism, 3D, neon, duotone, editorial, collage. Uses ui-ux-pro-max, frontend-design, ai-artist, ai-multimodal skills. |
+| `brainstorm` | Run a structured brainstorm session for startup ideas. Takes a theme or problem and generates ideas with quick gut-checks. Use when the user wants to explore a space or generate new ideas. |
+| `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation. |
+| `brand` | Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides. |
+| `browser-qa` | Run real browser QA with Playwright. Use when testing a frontend feature, verifying UI before PR, smoke testing after deploy, or investigating reported visual bugs. |
+| `ci-cd-patterns` | CI/CD pipeline patterns for GitHub Actions, PR automation, and deployment workflows. Use when setting up CI, fixing broken pipelines, automating PR checks, or configuring deployment. |
+| `competitive-teardown` | Deep competitor analysis. Tear apart a specific competitor or compare multiple competitors. Use when the user names a competitor or asks "who else is doing this? |
+| `content-engine` | Turn one idea into platform-native content for X, LinkedIn, TikTok, YouTube, newsletters. Use when the user wants social posts, threads, scripts, or content calendars. |
+| `database-patterns` | Database design patterns including schema design, migrations, soft deletes, and Exposed ORM. Use when creating tables, writing migrations, or implementing repositories. |
+| `database-table-creator` | Creates database table with full Kotlin synchronization (SQL migration → Table → Entity → Repository → Tests). Use when adding new database tables or entities. |
+| `deep-research` | Run deep research on a topic. Web searches, data collection, source checking, and a structured report. Use when the user needs more than a quick answer. |
+| `defuddle` | Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens. Use instead of WebFetch when the user provides a URL to read or analyze, for online documentation, articles, blog posts, or any standard web page. Do NOT use for URLs ending in .md — those are already markdown, use WebFetch directly. |
+| `design` | Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML→screenshot, multi-platform). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads. |
+| `design-intelligence` | Design system bootstrapping and token generation. Takes project context and outputs ready-to-use design tokens, Tailwind config, and CSS variables. |
+| `design-system` | Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compliant presentations. |
+| `design-workflow` | Anti-AI-generic design guidelines. Use when creating UI prototypes, reviewing designs for generic AI patterns, or setting up a project design system. |
+| `diagnose-crash` | > |
+| `dispatching-parallel-agents` | Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies |
+| `docx` | Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation. |
+| `executing-plans` | Use when you have a written implementation plan to execute in a separate session with review checkpoints |
+| `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill. |
+| `finishing-a-development-branch` | Use when implementation is complete, all tests pass, and you need to decide how to integrate the work |
+| `godot-gdscript-patterns` | Master Godot 4 GDScript patterns including signals, scenes, state machines, and optimization. Use when building Godot games, implementing game systems, or learning GDScript best practices. |
+| `graphify` | Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ exists, where the question should be treated as a graphify query first. Turns any input (code, docs, papers, images, videos) into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools. |
+| `humanizer` | \| |
+| `idea-validation` | Validate a startup idea with competitor analysis, market signals, and risk assessment. Be brutally honest. Use when the user wants to test if an idea is worth building. |
+| `investor-materials` | Create pitch decks, one-pagers, memos, financial models, and fundraising materials. Use when the user needs investor-facing docs. |
+| `investor-outreach` | Draft cold emails, warm intro blurbs, follow-ups, and investor communications. Use when the user needs to write to angels, VCs, or accelerators. |
+| `js-security-audit` | Audit JS/TS projects against NPM Security Guidelines covering project setup, dependency hygiene, CI/CD pipeline, Dependabot, and incident response. Use when reviewing package.json or lockfiles, adding or upgrading npm dependencies, setting up CI security gates, hardening a new repo, or responding to a compromised package. |
+| `json-canvas` | Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files, creating visual canvases, mind maps, flowcharts, or when the user mentions Canvas files in Obsidian. |
+| `karpathy-guidelines` | Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria. |
+| `kotlin-best-practices` | Kotlin coding standards including null safety, Either error handling, coroutines, and Exposed ORM patterns. Use when writing Kotlin code, reviewing code quality, or learning project patterns. |
+| `market-research` | Run market research, competitive analysis, investor due diligence, and industry scans. Use when the user wants market sizing, competitor comparisons, fund research, or tech scans. |
+| `obsidian-bases` | Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries. Use when working with .base files, creating database-like views of notes, or when the user mentions Bases, table views, card views, filters, or formulas in Obsidian. |
+| `obsidian-cli` | Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more. Also supports plugin and theme development with commands to reload plugins, run JavaScript, capture errors, take screenshots, and inspect the DOM. Use when the user asks to interact with their Obsidian vault, manage notes, search vault content, perform vault operations from the command line, or develop and debug Obsidian plugins and themes. |
+| `obsidian-markdown` | Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax. Use when working with .md files in Obsidian, or when the user mentions wikilinks, callouts, frontmatter, tags, embeds, or Obsidian notes. |
+| `omarchy` | > |
+| `ops-investigate-alert` | Investigate a monitoring alert end-to-end. Pulls metrics, logs, traces, and recent code changes to identify root cause. Works with any monitoring MCP. |
+| `ops-oncall-log` | Create a structured on-call log by pulling alerts from monitoring and writing a summary to your team's wiki. Requires a monitoring MCP (recommended: Datadog) and a wiki MCP (Confluence or Notion). |
+| `pdf` | Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill. |
+| `pptx` | Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user mentions \"deck,\" \"slides,\" \"presentation,\" or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. If a .pptx or .potx file needs to be opened, created, or touched, use this skill. |
+| `python-api-endpoint-creator` | Creates FastAPI endpoints with layered architecture (Router → Service → Repository). Use when creating new API endpoints, CRUD operations, or scaffolding a new domain module in a FastAPI project. |
+| `python-best-practices` | Python/FastAPI coding standards including async patterns, Pydantic v2, SQLAlchemy 2.0, and project structure. Use when writing Python code, reviewing FastAPI projects, or learning FastAPI conventions. |
+| `python-testing-strategies` | Testing patterns for FastAPI with pytest-asyncio, httpx AsyncClient, fixtures, and test data factories. Use when writing tests, setting up test infrastructure, or improving coverage in a FastAPI project. |
+| `receiving-code-review` | Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation |
+| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements |
+| `security-checklist` | Security best practices for Micronaut/Kotlin backend including authentication, authorization, input validation, and OWASP prevention. Use when implementing auth, validating inputs, or reviewing security. |
+| `service-debugging` | Structured debugging runbook for backend services. Use when investigating production issues, API errors, performance problems, or when something broke and you need to find why. |
+| `slides` | Create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies. |
+| `startup-pipeline` | Coordinates the full startup idea pipeline from brainstorm to investor outreach. Use when the user starts a new idea project, asks for the 'full pipeline', or references stages/gates. |
+| `subagent-driven-development` | Use when executing implementation plans with independent tasks in the current session |
+| `superpowers` | Serious development and strict workflows. Forces clarify → spec → plan → execute → review sequence with strict TDD ensuring a failing test is written before any implementation code. |
+| `systematic-debugging` | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes |
+| `terraform-best-practices` | Quick reference for Terraform conventions including file organization, naming, modules, state, security, and anti-patterns. Use when writing or reviewing Terraform code. |
+| `terraform-module-creator` | Create or extend reusable Terraform modules with proper structure, interfaces, and documentation. Use when building new infrastructure modules or extending existing ones. |
+| `terraform-review` | PR review checklist for Terraform changes covering structure, state safety, security, naming, modules, variables, providers, and CI/CD. Use when reviewing Terraform PRs or doing pre-merge checks. |
+| `terraform-security-audit` | Security audit for Terraform codebases covering IAM, networking, encryption, secrets, access control, and compliance. Use before prod deploys, periodic audits, or new service security review. |
+| `terraform-service-scaffold` | Generate complete service-level Terraform infrastructure with modules, environments, and CI/CD. Use when adding Terraform to a new service or bootstrapping infrastructure from scratch. |
+| `test-driven-development` | Use when implementing any feature or bugfix, before writing implementation code |
+| `testing-strategies` | Testing patterns for Micronaut/Kotlin backend including repository tests, integration tests, and test data builders. Use when writing tests, setting up test infrastructure, or improving coverage. |
+| `ui-styling` | Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive layouts, adding accessible components (dialogs, dropdowns, forms, tables), customizing themes and colors, implementing dark mode, generating visual designs and posters, or establishing consistent styling patterns across applications. |
+| `ui-ux-pro-max` | UI/UX design intelligence with searchable style, palette, typography, and chart databases. Use when designing UI components, choosing colors/fonts, reviewing code for UX issues, building landing pages, or implementing responsive layouts. |
+| `using-git-worktrees` | Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tools or git worktree fallback |
+| `using-superpowers` | Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions |
+| `verification-before-completion` | Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always |
+| `web-to-prd` | Scan a live web app with Playwright, extract all features, generate PRD/epics/stories with priorities and dependencies, export to Notion. Checks required MCP servers before starting. |
+| `writing-plans` | Use when you have a spec or requirements for a multi-step task, before touching code |
+| `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment |
+| `xlsx` | Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my downloads\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved. |
+
+## productivity — 16
+
+| Skill | What it does |
+|---|---|
+| `aident-loadout` | Access external apps via the Aident Loadout CLI. |
+| `airtable` | Airtable REST API via curl. Records CRUD, filters, upserts. |
+| `box` | Box manages cloud files, sharing, search, and metadata. |
+| `document-to-action-items` | Extract cited obligations, deadlines, tasks from documents. |
+| `docx` | Create, read, edit, template, and review Word .docx files. |
+| `google-workspace` | Gmail, Calendar, Drive, Docs, Sheets via gws CLI or Python. |
+| `image-text-extraction` | Use when an image needs text extraction via OCR. |
+| `maps` | Geocode, POIs, routes, timezones via OpenStreetMap/OSRM. |
+| `meeting-action-items` | Turn meeting notes into cited decisions, owners, tickets. |
+| `notion` | Notion API + ntn CLI: pages, databases, markdown, Workers. |
+| `pdf` | PDF files: create, read, merge, fill, OCR, edit text. |
+| `powerpoint` | Create, read, edit .pptx decks with python-pptx. |
+| `product-price-monitor` | Watch product, flight, or listing prices; alert on target. |
+| `teams-meeting-pipeline` | Teams meeting summaries, job replay, Graph subscriptions. |
+| `weekly-review-planning` | Weekly reset: commitments, stalled work, next-week plan. |
+| `xlsx` | Create, read, edit Excel .xlsx workbooks and CSVs. |
+
+## research — 5
+
+| Skill | What it does |
+|---|---|
+| `arxiv` | Search arXiv papers by keyword, author, category, or ID. |
+| `competitor-news-monitor` | Watch named companies for material news; cited digests. |
+| `grounded-citations` | Ground answers and documents in cited, verifiable sources. |
+| `llm-wiki` | Karpathy's LLM Wiki: build/query interlinked markdown KB. |
+| `rss-feeds` | Read RSS, Atom, JSON feeds; discover feeds behind a page. |
+
+## media — 4
+
+| Skill | What it does |
+|---|---|
+| `gif-search` | Search/download GIFs from Tenor via curl + jq. |
+| `songsee` | Audio spectrograms/features (mel, chroma, MFCC) via CLI. |
+| `youtube-content` | YouTube transcripts to summaries, threads, blogs. |
+| `youtube-style-replication` | Replicate a YouTube channel's format and voice. |
+
+## devops — 4
+
+| Skill | What it does |
+|---|---|
+| `arch-storage-cleanup` | Use when freeing disk space on Arch Linux. |
+| `linux-bluetooth-audio` | Use when Bluetooth audio isn't reaching headphones on Linux. |
+| `sdlc-review` | Review Kanban handoffs and route verified outcomes. |
+| `ssh-remote-access` | Use when setting up or running SSH to reach remote machines. |
+
+## email — 2
+
+| Skill | What it does |
+|---|---|
+| `email-inbox-triage` | Triage an inbox: prioritize threads, draft replies safely. |
+| `himalaya` | Himalaya CLI: IMAP/SMTP email from terminal. |
+
+## social-media — 2
+
+| Skill | What it does |
+|---|---|
+| `reddit-reading` | Read Reddit: subreddits, search, threads, users. No browser. |
+| `xurl` | X/Twitter via xurl CLI: raw post search, posting, DM, media. |
+
+## apple — 4
+
+| Skill | What it does |
+|---|---|
+| `apple-notes` | Manage Apple Notes via memo CLI: create, search, edit. |
+| `apple-reminders` | Apple Reminders via remindctl: add, list, complete. |
+| `findmy` | Track Apple devices/AirTags via FindMy.app on macOS. |
+| `imessage` | Send and receive iMessages/SMS via the imsg CLI on macOS. |
+
+## note-taking — 1
+
+| Skill | What it does |
+|---|---|
+| `obsidian` | Read, search, create, and edit notes in the Obsidian vault. |
+
+## security — 1
+
+| Skill | What it does |
+|---|---|
+| `godmode` | Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN. |
