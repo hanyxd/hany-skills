@@ -2,7 +2,7 @@
 
 # 🧠 Hermes Skill Library
 
-**156 agent skills — version-controlled, documented, ready to deploy.**
+**155 agent skills — version-controlled, documented, ready to deploy.**
 
 A curated library of [Hermes Agent](https://hermes-agent.nousresearch.com/docs) skills
 covering web development, AI agents, security, DevOps, creative production, research,
@@ -10,7 +10,7 @@ and productivity. Includes the custom [`web-mode`](#custom-skills) orchestrator 
 a single skill that drives the whole website pipeline end-to-end.
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
-![Skills](https://img.shields.io/badge/skills-156-4c1fff)
+![Skills](https://img.shields.io/badge/skills-155-4c1fff)
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macOS-lightgrey)
 ![Status](https://img.shields.io/badge/status-maintained-green)
 
@@ -21,7 +21,7 @@ a single skill that drives the whole website pipeline end-to-end.
 ## Why this repo
 
 - **One repo, all skills** — every SKILL.md plus its references, templates, and scripts.
-- **Searchable catalog** — `docs/CATALOG.md` lists all 156 skills with one-line descriptions.
+- **Searchable catalog** — `docs/CATALOG.md` lists all 155 skills with one-line descriptions.
 - **Safe to share** — secrets, runtime state, and caches are gitignored. Only skill source ships.
 - **Lenient license** — MIT. Fork it, use it, remix it.
 
@@ -54,7 +54,7 @@ These were authored for this library and are the starting points worth knowing:
 
 ## Catalog
 
-Browse the full searchable index: **[`docs/CATALOG.md`](docs/CATALOG.md)** — 156 skills across 15 categories.
+Browse the full searchable index: **[`docs/CATALOG.md`](docs/CATALOG.md)** — 155 skills across 23 categories.
 
 Highlights by area:
 
@@ -79,10 +79,28 @@ Highlights by area:
 │   ├── claude-code-imports/ # 72 imported dev skills
 │   ├── productivity/        # docx/pdf/xlsx/pptx, docs, apps
 │   ├── research/
-│   ├── ...                  # 15 categories total
+│   ├── ...                  # 23 categories total
 ├── docs/CATALOG.md          # Auto-generated searchable skill index
+├── scripts/                 # Repo tooling (see Development)
 └── LICENSE                  # MIT
 ```
+
+## Development
+
+The library is self-policing — a validation gate keeps the catalog, README, and
+docs site in sync with what's actually on disk.
+
+```bash
+# Regenerate docs/CATALOG.md from the on-disk skill tree (run after adding a skill)
+python3 scripts/gen-catalog.py
+
+# Structural validation: frontmatter, name/dir match, catalog accuracy, counts
+python3 scripts/validate-skills.py
+```
+
+Both run automatically on every push/PR via `.github/workflows/validate-library.yml`.
+If you add or remove a skill, run `gen-catalog.py` and commit the updated
+`docs/CATALOG.md` — CI will otherwise reject the change.
 
 ## What's NOT tracked
 

@@ -1,0 +1,27 @@
+name: Validate library
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PyYAML
+        run: pip install pyyaml
+      - name: Check catalog matches disk
+        run: |
+          python3 scripts/gen-catalog.py
+          git diff --exit-code docs/CATALOG.md \
+            || { echo "docs/CATALOG.md is stale. Run scripts/gen-catalog.py and commit the update."; exit 1; }
+      - name: Run structural validator
+        run: python3 scripts/validate-skills.py
