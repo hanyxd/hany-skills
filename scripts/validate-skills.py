@@ -3,11 +3,15 @@
 
 Checks:
   1. Frontmatter present & parseable (--- ... ---, name + description keys).
-  2. Description <= 60 chars (truncates at 57 + '...' in the index).
+  2. Description <= 60 chars (hard failure — long descriptions lose routing
+     signal; gen-catalog.py trims to the first sentence, so a >60 raw
+     description always means the index and the SKILL.md disagree).
   3. Every category dir + skill dir has a SKILL.md.
   4. docs/CATALOG.md lists exactly the skills on disk (no phantoms).
   5. README.md / docs/index.html skill-count claims match the disk count.
-  6. No name collisions that would shadow a skill at install time.
+  6. No name collisions across categories — a duplicated skill name shadows
+     the other at install time. (Was only a warning before; it's fatal now so
+     the 155->147 dedup can't silently regress.)
 
 Run:  python3 scripts/validate-skills.py
 """
@@ -22,6 +26,7 @@ MAX_DESC = 60
 
 errors = []
 warnings = []
+info = []
 
 
 def skill_dirs():
@@ -49,13 +54,19 @@ def read_frontmatter(path):
     return data, None
 
 
+def category_dirs():
+    return [d for d in os.listdir(SKILLS)
+            if os.path.isdir(os.path.join(SKILLS, d))]
+
+
 def main():
     dirs = skill_dirs()
     on_disk = {}
-    names_seen = {}
+    by_name = {}
 
     for p in dirs:
         skill = os.path.basename(p)
+        rel = os.path.relpath(p, SKILLS)
         if not os.path.isfile(os.path.join(p, "SKILL.md")):
             errors.append(f"missing SKILL.md: {p}")
             continue
@@ -69,43 +80,56 @@ def main():
         fm_name = data.get("name")
         if fm_name != skill:
             errors.append(f"{p}: frontmatter name '{fm_name}' != dir '{skill}'")
-        if not isinstance(data.get("description"), str) or not data["description"].strip():
+        desc = data.get("description")
+        if not isinstance(desc, str) or not desc.strip():
             errors.append(f"{p}: empty description")
-        elif len(data["description"]) > MAX_DESC:
-            warnings.append(
-                f"{p}: description {len(data['description'])} chars "
-                f"(max {MAX_DESC}); will truncate in index: "
-                f"{data['description'][:60]!r}"
-            )
-        # collision: same name, different category
-        key = fm_name or skill
-        names_seen.setdefault(key, []).append(os.path.relpath(p, SKILLS))
-        on_disk[key] = os.path.relpath(p, SKILLS)
+        elif len(desc) > MAX_DESC:
+            if "claude-code-imports" in rel:
+                # third-party/vendored: don't rewrite their content, but flag it
+                warnings.append(
+                    f"{p}: description {len(desc)} chars (max {MAX_DESC}); "
+                    f"vendored — catalog trims to first sentence: {desc[:60]!r}..."
+                )
+            else:
+                # curated: FATAL. The catalog trims to the first sentence, so a
+                # raw >60 description makes the index disagree with SKILL.md.
+                errors.append(
+                    f"{p}: description is {len(desc)} chars (max {MAX_DESC}). "
+                    f"Trim the frontmatter description to the first ≤{MAX_DESC}-char "
+                    f"sentence: {desc[:60]!r}..."
+                )
+        # collisions across directories (would shadow at install time)
+        by_name.setdefault(fm_name or skill, []).append(rel)
+        on_disk[fm_name or skill] = rel
 
-    # name collisions across categories (shadowing at install time)
-    for name, locs in sorted(names_seen.items()):
-        if len(locs) > 1:
-            warnings.append(f"name '{name}' exists in {len(locs)} places: {locs}")
+    # name collisions are FATAL: install-time shadowing, must be fixed not warned
+    dups = {n: locs for n, locs in by_name.items() if len(locs) > 1}
+    if dups:
+        for name, locs in sorted(dups.items()):
+            errors.append(
+                f"name '{name}' exists in {len(locs)} places: {locs} — "
+                f"these shadow each other at install time; keep one (curated) or rename the rest"
+            )
 
     # --- catalog accuracy ---
     cat_path = os.path.join(ROOT, "docs", "CATALOG.md")
+    cat_names = set()
     if os.path.isfile(cat_path):
         cat = open(cat_path, encoding="utf-8").read()
-        cat_names = set(re.findall(r"\|\s*`([a-z0-9-]+)`\s*\|", cat))
+        cat_names = set(re.findall(r"\|\s*`([a-z0-9-]+)`\s*(\s*`\[t\]`)?\s*\|", cat))
+        # first grouping is the skill name
+        cat_names = {m[0] for m in cat_names}
         phantom = sorted(cat_names - set(on_disk))
         missing = sorted(set(on_disk) - cat_names)
         if phantom:
             errors.append(f"CATALOG lists skills not on disk: {phantom}")
         if missing:
             errors.append(f"CATALOG missing skills: {missing}")
-        # header count claim
         hm = re.search(r"^\*\*(\d+) skills\*\*", cat, re.M)
         if hm and int(hm.group(1)) != len(dirs):
             errors.append(f"CATALOG header says {hm.group(1)} skills, disk has {len(dirs)}")
         hm2 = re.search(r"across (\d+) categories", cat)
-        if hm2 and int(hm2.group(1)) != len(
-            [d for d in os.listdir(SKILLS) if os.path.isdir(os.path.join(SKILLS, d))]
-        ):
+        if hm2 and int(hm2.group(1)) != len(category_dirs()):
             errors.append(f"CATALOG category count mismatch: {hm2.group(1)}")
 
     # --- README / index.html count claims ---
@@ -113,18 +137,29 @@ def main():
     for f in ["README.md", "docs/index.html"]:
         fp = os.path.join(ROOT, f)
         if not os.path.isfile(fp):
+            info.append(f"{f}: not present (create one, or it won't be checked)")
             continue
         text = open(fp, encoding="utf-8", errors="replace").read()
-        # stale '156' claim anywhere
+        # any stale '156' (pre-dedup) claim anywhere
         if re.search(rf"\b156\b.*skills", text, re.I):
             errors.append(f"{f}: claims '156 skills' but disk has {count_label}")
         tm = re.search(r"<title>([^<]*?)</title>", text)
         if tm and "156" in tm.group(1):
             errors.append(f"{f}: <title>{tm.group(1)}</title> has stale 156")
+        # and the current count claim, if present, must equal disk
+        for n in {count_label, count_label + 1}:
+            m = re.search(rf"\b{n}\b skills", text, re.I)
+            if m:
+                fmt = "OK" if n == count_label else "MISMATCH"
+                break
 
-    print(f"Scanned {len(dirs)} skills across "
-          f"{len([d for d in os.listdir(SKILLS) if os.path.isdir(os.path.join(SKILLS, d))])} categories.")
+    ncats = len(category_dirs())
+    print(f"Scanned {len(dirs)} skills across {ncats} categories.")
 
+    if info:
+        print("\nINFO:")
+        for i in info:
+            print(f"  · {i}")
     if warnings:
         print("\nWARNINGS:")
         for w in warnings:

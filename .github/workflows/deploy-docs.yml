@@ -15,6 +15,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PyYAML
+        run: pip install pyyaml
+      - name: Regenerate docs site from disk
+        run: |
+          python3 scripts/gen-docs.py
+          # sanity: the generated site must match the committed index (no drift)
+          git diff --exit-code docs/index.html \
+            || { echo "docs/index.html is stale. Run scripts/gen-docs.py and commit it."; exit 1; }
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload docs site

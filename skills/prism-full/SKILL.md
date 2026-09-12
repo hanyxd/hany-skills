@@ -1,6 +1,6 @@
 ---
 name: prism-full
-description: "Full Prism: multi-pass structural analysis with mandatory adversarial self-correction. Designs custom analytical passes, executes them with chaining, then attacks its own findings before synthesizing. Use for maximum depth on important code or artifacts."
+description: "Multi-pass structural analysis + adversarial self-check."
 version: 1.0.0
 author: Cranot
 license: MIT

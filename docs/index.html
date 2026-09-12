@@ -3,127 +3,237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hermes Skill Library — 155 Skills</title>
-<meta name="description" content="A curated library of 155 Hermes Agent skills across web, creative, security, DevOps, research, and productivity. Includes the web-mode website-builder orchestrator.">
+<title>Hermes Skill Library — 147 Skills</title>
+<meta name="description" content="A curated + vendored library of 147 Hermes Agent skills across web, creative, security, DevOps, research, and productivity.">
 <style>
-  :root{
-    --bg:#0b0d10; --surface:#11151b; --surface2:#161b22;
-    --text:#e6edf3; --muted:#8b949e; --border:#21262d;
-    --accent:#4c1fff; --accent2:#7c3aed; --good:#3fb950;
-    --mono:"SFMono-Regular",ui-monospace,Menlo,monospace;
-  }
+  :root{--bg:#0b0d10;--surface:#11151b;--surface2:#161b22;--text:#e6edf3;--muted:#8b949e;--border:#21262d;--accent:#4c1fff;--accent2:#7c3aed;--good:#3fb950;--mono:"SFMono-Regular",ui-monospace,Menlo,monospace}
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-  /* ---------- HERO / Decide-Learn: ONE idea per section ---------- */
-  header.hero{padding:96px 0 64px;border-bottom:1px solid var(--border)}
-  .kicker{color:var(--accent2);font:600 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
-  h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;max-width:18ch}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  header.hero{padding:64px 0 40px;border-bottom:1px solid var(--border)}
+  .kicker{color:var(--accent2);font:600 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+  h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
   h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{color:var(--muted);font-size:1.15rem;max-width:56ch;margin:20px 0 32px}
-  .cta{display:flex;gap:12px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.15s}
-  .btn.primary{background:var(--accent);color:#fff}
-  .btn.primary:hover{background:var(--accent2)}
-  .btn.ghost{border:1px solid var(--border);color:var(--text)}
-  .btn.ghost:hover{border-color:var(--muted);background:var(--surface)}
-  .stats{display:flex;gap:48px;margin-top:56px;flex-wrap:wrap}
-  .stat b{font-size:2rem;font-weight:800;display:block;line-height:1}
-  .stat span{color:var(--muted);font-size:.85rem}
-  /* ---------- Sections ---------- */
-  section{padding:72px 0;border-bottom:1px solid var(--border)}
-  h2{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
-  .lead{color:var(--muted);max-width:60ch;margin-bottom:32px}
-  /* ---------- Feature: web-mode spotlight ---------- */
-  .spot{background:linear-gradient(135deg,rgba(76,31,255,.12),rgba(124,58,237,.05));border:1px solid var(--accent2);border-radius:16px;padding:28px}
-  .spot .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:var(--mono);font-size:.85rem;color:var(--muted);margin-top:16px}
-  .spot .flow .step{color:var(--text);background:var(--surface2);padding:6px 12px;border-radius:6px;border:1px solid var(--border)}
-  /* ---------- Category grid ---------- */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;transition:.15s}
+  .sub{color:var(--muted);font-size:1.05rem;max-width:60ch;margin:14px 0 24px}
+  .stats{display:flex;gap:36px;margin-top:28px;flex-wrap:wrap}
+  .stat b{font-size:1.7rem;font-weight:800;display:block;line-height:1}
+  .stat span{color:var(--muted);font-size:.82rem}
+  .controls{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:22px 0 8px}
+  input[type=search]{flex:1;min-width:220px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:11px 14px;font-size:.95rem}
+  input[type=search]:focus{outline:none;border-color:var(--accent2)}
+  select{background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:11px 14px;font-size:.95rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:18px 0 60px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;transition:.15s}
   .card:hover{border-color:var(--accent2);transform:translateY(-2px)}
-  .card h3{font-size:1.02rem;font-weight:700;margin-bottom:6px}
-  .card p{color:var(--muted);font-size:.88rem}
-  .card .n{display:inline-block;font:600 11px var(--mono);color:var(--accent2);background:rgba(124,58,237,.12);padding:2px 8px;border-radius:20px;margin-bottom:10px}
-  /* ---------- Footer ---------- */
-  footer{padding:40px 0;color:var(--muted);font-size:.85rem}
-  footer a{color:var(--text)}
-  a{color:var(--accent2);text-decoration:none}
-  a:hover{text-decoration:underline}
-  @media(max-width:640px){header.hero{padding:64px 0 48px}.stats{gap:28px}.stat b{font-size:1.5rem}}
+  .cname{display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap}
+  .cname .n{font:700 1.02rem var(--mono);color:var(--accent2)}
+  .card .t{font:600 10px var(--mono);color:var(--surface);background:var(--accent2);padding:1px 6px;border-radius:10px;letter-spacing:.03em}
+  .card .d{color:var(--muted);font-size:.87rem;margin-bottom:8px}
+  .card .rel{font:500 10px var(--mono);color:var(--good);opacity:.75;word-break:break-all}
+  .empty{color:var(--muted);padding:40px 0;text-align:center;font-size:1.05rem}
+  footer{padding:32px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+  footer a{color:var(--text);text-decoration:none}
+  .hide{display:none}
 </style>
 </head>
 <body>
-
 <header class="hero">
   <div class="wrap">
     <div class="kicker">Hermes Agent · Skill Library</div>
-    <h1>A library of <span class="grad">155 skills</span> to run any job.</h1>
-    <p class="sub">Web, creative, security, DevOps, research, and productivity — one version-controlled repo, documented and ready to deploy into any Hermes Agent install.</p>
-    <div class="cta">
-      <a class="btn primary" href="https://github.com/hanyxd/hany-skills">View on GitHub →</a>
-      <a class="btn ghost" href="docs/CATALOG.md">Browse the catalog</a>
-    </div>
+    <h1><span class="grad">147 skills</span>, one <span class="grad">library</span></h1>
+    <p class="sub">Curated + vendored Hermes Agent skills. Click into a card's path for its install command, or use the repo's <span class="grad" style="background:initial;color:var(--accent2)">./install.sh</span> CLI.</p>
     <div class="stats">
-      <div class="stat"><b>155</b><span>skills</span></div>
-      <div class="stat"><b>23</b><span>categories</span></div>
-      <div class="stat"><b>72</b><span>backend/dev skills</span></div>
-      <div class="stat"><b>54</b><span>design systems</span></div>
+      <div class="stat"><b>147</b><span>total skills</span></div>
+      <div class="stat"><b>83</b><span>curated</span></div>
+      <div class="stat"><b>64</b><span>vendored [t]</span></div>
+      <div class="stat"><b>21</b><span>categories</span></div>
     </div>
   </div>
 </header>
-
-<section>
-  <div class="wrap">
-    <h2>Featured: <code>web-mode</code></h2>
-    <p class="lead">A single skill that drives the whole website pipeline end-to-end — scoping, design, build, QA, and deploy — delegating each stage to the best specialist skill instead of recreating it.</p>
-    <div class="spot">
-      <p>One orchestrator. Five phases. The design is non-generic by construction — it commits to a surface archetype before writing any tokens, and runs an anti-slop self-audit before shipping.</p>
-      <div class="flow">
-        <span class="step">1 · Scope</span><span>→</span>
-        <span class="step">2 · Design</span><span>→</span>
-        <span class="step">3 · Build</span><span>→</span>
-        <span class="step">4 · QA</span><span>→</span>
-        <span class="step">5 · Deploy</span>
-      </div>
-    </div>
+<main class="wrap">
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search skills… (name or description)">
+    <select id="cat"><option value="">All categories</option><option value="apple">Apple</option><option value="autonomous-ai-agents">Autonomous Ai Agents</option><option value="claude-code-imports">Claude Code Imports</option><option value="creative">Creative</option><option value="devops">Devops</option><option value="email">Email</option><option value="media">Media</option><option value="note-taking">Note Taking</option><option value="pov-explainer-videos">Pov Explainer Videos</option><option value="prism-3way">Prism 3Way</option><option value="prism-discover">Prism Discover</option><option value="prism-full">Prism Full</option><option value="prism-reflect">Prism Reflect</option><option value="productivity">Productivity</option><option value="requesting-code-review">Requesting Code Review</option><option value="research">Research</option><option value="security">Security</option><option value="social-media">Social Media</option><option value="software-development">Software Development</option><option value="using-superpowers">Using Superpowers</option><option value="web">Web</option></select>
+    <label class="stat" style="display:flex;gap:8px;align-items:center;color:var(--muted);font-size:.85rem">
+      <input type="checkbox" id="hideVend"> <span>Hide vendored [t]</span>
+    </label>
   </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>By category</h2>
-    <p class="lead">Every skill is searchable in the full catalog. Here are the areas it covers.</p>
-    <div class="grid">
-      <div class="card"><span class="n">Web</span><h3>web-mode · deploy · harness</h3><p>End-to-end site building, free deployment, and a CDP browser harness.</p></div>
-      <div class="card"><span class="n">Creative</span><h3>Design · video · art</h3><p>claude-design, 54 design systems, manim, p5.js, infographics, ASCII video.</p></div>
-      <div class="card"><span class="n">AI agents</span><h3>Delegate & coordinate</h3><p>hermes-agent, codex, claude-code, opencode, computer-use, browser CDP.</p></div>
-      <div class="card"><span class="n">Backend</span><h3>FastAPI · Kotlin · DB</h3><p>API endpoint creators, database patterns, layered architecture, testing.</p></div>
-      <div class="card"><span class="n">Security</span><h3>Audit & harden</h3><p>JS/NPM security audit, Terraform security audit, backend security checklist.</p></div>
-      <div class="card"><span class="n">DevOps</span><h3>Terraform · CI/CD</h3><p>5 Terraform skills, CI/CD patterns, service debugging, on-call logs.</p></div>
-      <div class="card"><span class="n">Research</span><h3>Deep-dive & cite</h3><p>deep-research, arxiv, market research, grounded citations, RSS monitoring.</p></div>
-      <div class="card"><span class="n">Productivity</span><h3>Documents & apps</h3><p>docx, pdf, xlsx, pptx, Google Workspace, Notion, Airtable, maps, OCR.</p></div>
-    </div>
+  <div class="grid" id="grid">
+    <div class="card" data-cat="apple" data-name="apple-notes"><div class="cname"><span class="n">apple-notes</span></div><div class="d">Manage Apple Notes via memo CLI: create, search, edit.</div><div class="rel">apple/apple-notes</div></div>
+    <div class="card" data-cat="apple" data-name="apple-reminders"><div class="cname"><span class="n">apple-reminders</span></div><div class="d">Apple Reminders via remindctl: add, list, complete.</div><div class="rel">apple/apple-reminders</div></div>
+    <div class="card" data-cat="apple" data-name="findmy"><div class="cname"><span class="n">findmy</span></div><div class="d">Track Apple devices/AirTags via FindMy.app on macOS.</div><div class="rel">apple/findmy</div></div>
+    <div class="card" data-cat="apple" data-name="imessage"><div class="cname"><span class="n">imessage</span></div><div class="d">Send and receive iMessages/SMS via the imsg CLI on macOS.</div><div class="rel">apple/imessage</div></div>
+    <div class="card" data-cat="autonomous-ai-agents" data-name="browser-exec-cdp"><div class="cname"><span class="n">browser-exec-cdp</span></div><div class="d">Use when browser_exec fails: launch Chromium + BU_CDP_URL.</div><div class="rel">autonomous-ai-agents/browser-exec-cdp</div></div>
+    <div class="card" data-cat="autonomous-ai-agents" data-name="claude-code"><div class="cname"><span class="n">claude-code</span></div><div class="d">Delegate coding to Claude Code CLI (features, PRs).</div><div class="rel">autonomous-ai-agents/claude-code</div></div>
+    <div class="card" data-cat="autonomous-ai-agents" data-name="codex"><div class="cname"><span class="n">codex</span></div><div class="d">Delegate coding to OpenAI Codex CLI (features, PRs).</div><div class="rel">autonomous-ai-agents/codex</div></div>
+    <div class="card" data-cat="autonomous-ai-agents" data-name="computer-use"><div class="cname"><span class="n">computer-use</span></div><div class="d">Drive the desktop background-first; escalate on signal.</div><div class="rel">autonomous-ai-agents/computer-use</div></div>
+    <div class="card" data-cat="autonomous-ai-agents" data-name="opencode"><div class="cname"><span class="n">opencode</span></div><div class="d">Delegate coding to OpenCode CLI (features, PR review).</div><div class="rel">autonomous-ai-agents/opencode</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="api-endpoint-creator"><div class="cname"><span class="n">api-endpoint-creator</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Creates RPC-style endpoint following layered architecture...</div><div class="rel">claude-code-imports/api-endpoint-creator</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="article-writing"><div class="cname"><span class="n">article-writing</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Write blog posts, guides, tutorials, and long-form content.</div><div class="rel">claude-code-imports/article-writing</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="backend-api-design"><div class="cname"><span class="n">backend-api-design</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Design RPC-style APIs with layered architecture (Controll...</div><div class="rel">claude-code-imports/backend-api-design</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="banner-design"><div class="cname"><span class="n">banner-design</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Design banners for social media, ads, website heroes, cre...</div><div class="rel">claude-code-imports/banner-design</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="brainstorm"><div class="cname"><span class="n">brainstorm</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Run a structured brainstorm session for startup ideas.</div><div class="rel">claude-code-imports/brainstorm</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="brainstorming"><div class="cname"><span class="n">brainstorming</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">You MUST use this before any creative work - creating fea...</div><div class="rel">claude-code-imports/brainstorming</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="brand"><div class="cname"><span class="n">brand</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Brand voice, visual identity, messaging frameworks, asset...</div><div class="rel">claude-code-imports/brand</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="browser-qa"><div class="cname"><span class="n">browser-qa</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Run real browser QA with Playwright.</div><div class="rel">claude-code-imports/browser-qa</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="ci-cd-patterns"><div class="cname"><span class="n">ci-cd-patterns</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">CI/CD pipeline patterns for GitHub Actions, PR automation...</div><div class="rel">claude-code-imports/ci-cd-patterns</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="competitive-teardown"><div class="cname"><span class="n">competitive-teardown</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Deep competitor analysis.</div><div class="rel">claude-code-imports/competitive-teardown</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="content-engine"><div class="cname"><span class="n">content-engine</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Turn one idea into platform-native content for X, LinkedI...</div><div class="rel">claude-code-imports/content-engine</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="database-patterns"><div class="cname"><span class="n">database-patterns</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Database design patterns including schema design, migrati...</div><div class="rel">claude-code-imports/database-patterns</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="database-table-creator"><div class="cname"><span class="n">database-table-creator</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Creates database table with full Kotlin synchronization (...</div><div class="rel">claude-code-imports/database-table-creator</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="deep-research"><div class="cname"><span class="n">deep-research</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Run deep research on a topic.</div><div class="rel">claude-code-imports/deep-research</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="defuddle"><div class="cname"><span class="n">defuddle</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Extract clean markdown content from web pages using Defud...</div><div class="rel">claude-code-imports/defuddle</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="design"><div class="cname"><span class="n">design</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Comprehensive design skill: brand identity, design tokens...</div><div class="rel">claude-code-imports/design</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="design-intelligence"><div class="cname"><span class="n">design-intelligence</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Design system bootstrapping and token generation.</div><div class="rel">claude-code-imports/design-intelligence</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="design-system"><div class="cname"><span class="n">design-system</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Token architecture, component specifications, and slide g...</div><div class="rel">claude-code-imports/design-system</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="design-workflow"><div class="cname"><span class="n">design-workflow</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Anti-AI-generic design guidelines.</div><div class="rel">claude-code-imports/design-workflow</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="diagnose-crash"><div class="cname"><span class="n">diagnose-crash</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Diagnose why a program crashed on this machine, from a sy...</div><div class="rel">claude-code-imports/diagnose-crash</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="dispatching-parallel-agents"><div class="cname"><span class="n">dispatching-parallel-agents</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use when facing 2+ independent tasks that can be worked o...</div><div class="rel">claude-code-imports/dispatching-parallel-agents</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="executing-plans"><div class="cname"><span class="n">executing-plans</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use when you have a written implementation plan to execut...</div><div class="rel">claude-code-imports/executing-plans</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="find-skills"><div class="cname"><span class="n">find-skills</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Helps users discover and install agent skills when they a...</div><div class="rel">claude-code-imports/find-skills</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="finishing-a-development-branch"><div class="cname"><span class="n">finishing-a-development-branch</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use when implementation is complete, all tests pass, and ...</div><div class="rel">claude-code-imports/finishing-a-development-branch</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="godot-gdscript-patterns"><div class="cname"><span class="n">godot-gdscript-patterns</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Master Godot 4 GDScript patterns including signals, scene...</div><div class="rel">claude-code-imports/godot-gdscript-patterns</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="graphify"><div class="cname"><span class="n">graphify</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use for any question about a codebase, its architecture, ...</div><div class="rel">claude-code-imports/graphify</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="idea-validation"><div class="cname"><span class="n">idea-validation</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Validate a startup idea with competitor analysis, market ...</div><div class="rel">claude-code-imports/idea-validation</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="investor-materials"><div class="cname"><span class="n">investor-materials</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Create pitch decks, one-pagers, memos, financial models, ...</div><div class="rel">claude-code-imports/investor-materials</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="investor-outreach"><div class="cname"><span class="n">investor-outreach</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Draft cold emails, warm intro blurbs, follow-ups, and inv...</div><div class="rel">claude-code-imports/investor-outreach</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="js-security-audit"><div class="cname"><span class="n">js-security-audit</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Audit JS/TS projects against NPM Security Guidelines cove...</div><div class="rel">claude-code-imports/js-security-audit</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="json-canvas"><div class="cname"><span class="n">json-canvas</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Create and edit JSON Canvas files (.canvas) with nodes, e...</div><div class="rel">claude-code-imports/json-canvas</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="karpathy-guidelines"><div class="cname"><span class="n">karpathy-guidelines</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Behavioral guidelines to reduce common LLM coding mistakes.</div><div class="rel">claude-code-imports/karpathy-guidelines</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="kotlin-best-practices"><div class="cname"><span class="n">kotlin-best-practices</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Kotlin coding standards including null safety, Either err...</div><div class="rel">claude-code-imports/kotlin-best-practices</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="market-research"><div class="cname"><span class="n">market-research</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Run market research, competitive analysis, investor due d...</div><div class="rel">claude-code-imports/market-research</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="obsidian-bases"><div class="cname"><span class="n">obsidian-bases</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Create and edit Obsidian Bases (.base files) with views, ...</div><div class="rel">claude-code-imports/obsidian-bases</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="obsidian-cli"><div class="cname"><span class="n">obsidian-cli</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Interact with Obsidian vaults using the Obsidian CLI to r...</div><div class="rel">claude-code-imports/obsidian-cli</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="obsidian-markdown"><div class="cname"><span class="n">obsidian-markdown</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Create and edit Obsidian Flavored Markdown with wikilinks...</div><div class="rel">claude-code-imports/obsidian-markdown</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="omarchy"><div class="cname"><span class="n">omarchy</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">REQUIRED for end-user customization of Linux desktop, win...</div><div class="rel">claude-code-imports/omarchy</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="ops-investigate-alert"><div class="cname"><span class="n">ops-investigate-alert</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Investigate a monitoring alert end-to-end.</div><div class="rel">claude-code-imports/ops-investigate-alert</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="ops-oncall-log"><div class="cname"><span class="n">ops-oncall-log</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Create a structured on-call log by pulling alerts from mo...</div><div class="rel">claude-code-imports/ops-oncall-log</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="pptx"><div class="cname"><span class="n">pptx</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use this skill any time a .pptx or .potx file is involved...</div><div class="rel">claude-code-imports/pptx</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="python-api-endpoint-creator"><div class="cname"><span class="n">python-api-endpoint-creator</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Creates FastAPI endpoints with layered architecture (Rout...</div><div class="rel">claude-code-imports/python-api-endpoint-creator</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="python-best-practices"><div class="cname"><span class="n">python-best-practices</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Python/FastAPI coding standards including async patterns,...</div><div class="rel">claude-code-imports/python-best-practices</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="python-testing-strategies"><div class="cname"><span class="n">python-testing-strategies</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Testing patterns for FastAPI with pytest-asyncio, httpx A...</div><div class="rel">claude-code-imports/python-testing-strategies</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="receiving-code-review"><div class="cname"><span class="n">receiving-code-review</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use when receiving code review feedback, before implement...</div><div class="rel">claude-code-imports/receiving-code-review</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="security-checklist"><div class="cname"><span class="n">security-checklist</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Security best practices for Micronaut/Kotlin backend incl...</div><div class="rel">claude-code-imports/security-checklist</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="service-debugging"><div class="cname"><span class="n">service-debugging</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Structured debugging runbook for backend services.</div><div class="rel">claude-code-imports/service-debugging</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="slides"><div class="cname"><span class="n">slides</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Create strategic HTML presentations with Chart.js, design...</div><div class="rel">claude-code-imports/slides</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="startup-pipeline"><div class="cname"><span class="n">startup-pipeline</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Coordinates the full startup idea pipeline from brainstor...</div><div class="rel">claude-code-imports/startup-pipeline</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="subagent-driven-development"><div class="cname"><span class="n">subagent-driven-development</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use when executing implementation plans with independent ...</div><div class="rel">claude-code-imports/subagent-driven-development</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="superpowers"><div class="cname"><span class="n">superpowers</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Serious development and strict workflows.</div><div class="rel">claude-code-imports/superpowers</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="terraform-best-practices"><div class="cname"><span class="n">terraform-best-practices</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Quick reference for Terraform conventions including file ...</div><div class="rel">claude-code-imports/terraform-best-practices</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="terraform-module-creator"><div class="cname"><span class="n">terraform-module-creator</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Create or extend reusable Terraform modules with proper s...</div><div class="rel">claude-code-imports/terraform-module-creator</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="terraform-review"><div class="cname"><span class="n">terraform-review</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">PR review checklist for Terraform changes covering struct...</div><div class="rel">claude-code-imports/terraform-review</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="terraform-security-audit"><div class="cname"><span class="n">terraform-security-audit</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Security audit for Terraform codebases covering IAM, netw...</div><div class="rel">claude-code-imports/terraform-security-audit</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="terraform-service-scaffold"><div class="cname"><span class="n">terraform-service-scaffold</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Generate complete service-level Terraform infrastructure ...</div><div class="rel">claude-code-imports/terraform-service-scaffold</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="testing-strategies"><div class="cname"><span class="n">testing-strategies</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Testing patterns for Micronaut/Kotlin backend including r...</div><div class="rel">claude-code-imports/testing-strategies</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="ui-styling"><div class="cname"><span class="n">ui-styling</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Create beautiful, accessible user interfaces with shadcn/...</div><div class="rel">claude-code-imports/ui-styling</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="ui-ux-pro-max"><div class="cname"><span class="n">ui-ux-pro-max</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">UI/UX design intelligence with searchable style, palette,...</div><div class="rel">claude-code-imports/ui-ux-pro-max</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="using-git-worktrees"><div class="cname"><span class="n">using-git-worktrees</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use when starting feature work that needs isolation from ...</div><div class="rel">claude-code-imports/using-git-worktrees</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="verification-before-completion"><div class="cname"><span class="n">verification-before-completion</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use when about to claim work is complete, fixed, or passi...</div><div class="rel">claude-code-imports/verification-before-completion</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="web-to-prd"><div class="cname"><span class="n">web-to-prd</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Scan a live web app with Playwright, extract all features...</div><div class="rel">claude-code-imports/web-to-prd</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="writing-plans"><div class="cname"><span class="n">writing-plans</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use when you have a spec or requirements for a multi-step...</div><div class="rel">claude-code-imports/writing-plans</div></div>
+    <div class="card" data-cat="claude-code-imports" data-name="writing-skills"><div class="cname"><span class="n">writing-skills</span> <span class="t" title="Third-party vendored">[t]</span></div><div class="d">Use when creating new skills, editing existing skills, or...</div><div class="rel">claude-code-imports/writing-skills</div></div>
+    <div class="card" data-cat="creative" data-name="architecture-diagram"><div class="cname"><span class="n">architecture-diagram</span></div><div class="d">Dark-themed SVG architecture/cloud/infra diagrams as HTML.</div><div class="rel">creative/architecture-diagram</div></div>
+    <div class="card" data-cat="creative" data-name="ascii-video"><div class="cname"><span class="n">ascii-video</span></div><div class="d">ASCII video: convert video/audio to colored ASCII MP4/GIF.</div><div class="rel">creative/ascii-video</div></div>
+    <div class="card" data-cat="creative" data-name="baoyu-infographic"><div class="cname"><span class="n">baoyu-infographic</span></div><div class="d">Infographics: 21 layouts x 21 styles (信息图, 可视化).</div><div class="rel">creative/baoyu-infographic</div></div>
+    <div class="card" data-cat="creative" data-name="blender-mcp"><div class="cname"><span class="n">blender-mcp</span></div><div class="d">Use when the user is working in Blender.</div><div class="rel">creative/blender-mcp</div></div>
+    <div class="card" data-cat="creative" data-name="claude-design"><div class="cname"><span class="n">claude-design</span></div><div class="d">Design one-off HTML artifacts (landing, deck, prototype).</div><div class="rel">creative/claude-design</div></div>
+    <div class="card" data-cat="creative" data-name="design-md"><div class="cname"><span class="n">design-md</span></div><div class="d">Author/validate/export Google&#x27;s DESIGN.md token spec files.</div><div class="rel">creative/design-md</div></div>
+    <div class="card" data-cat="creative" data-name="humanizer"><div class="cname"><span class="n">humanizer</span></div><div class="d">Humanize text: strip AI-isms and add real voice.</div><div class="rel">creative/humanizer</div></div>
+    <div class="card" data-cat="creative" data-name="manim-video"><div class="cname"><span class="n">manim-video</span></div><div class="d">Manim CE animations: 3Blue1Brown math/algo videos.</div><div class="rel">creative/manim-video</div></div>
+    <div class="card" data-cat="creative" data-name="p5js"><div class="cname"><span class="n">p5js</span></div><div class="d">p5.js sketches: gen art, shaders, interactive, 3D.</div><div class="rel">creative/p5js</div></div>
+    <div class="card" data-cat="creative" data-name="personal-portfolio-site"><div class="cname"><span class="n">personal-portfolio-site</span></div><div class="d">Build the user&#x27;s personal about/resume web pages.</div><div class="rel">creative/personal-portfolio-site</div></div>
+    <div class="card" data-cat="creative" data-name="popular-web-designs"><div class="cname"><span class="n">popular-web-designs</span></div><div class="d">54 real design systems (Stripe, Linear, Vercel) as HTML/CSS.</div><div class="rel">creative/popular-web-designs</div></div>
+    <div class="card" data-cat="creative" data-name="songwriting-and-ai-music"><div class="cname"><span class="n">songwriting-and-ai-music</span></div><div class="d">Songwriting craft and Suno AI music prompts.</div><div class="rel">creative/songwriting-and-ai-music</div></div>
+    <div class="card" data-cat="devops" data-name="arch-storage-cleanup"><div class="cname"><span class="n">arch-storage-cleanup</span></div><div class="d">Use when freeing disk space on Arch Linux.</div><div class="rel">devops/arch-storage-cleanup</div></div>
+    <div class="card" data-cat="devops" data-name="linux-bluetooth-audio"><div class="cname"><span class="n">linux-bluetooth-audio</span></div><div class="d">Use when Bluetooth audio isn&#x27;t reaching headphones on Linux.</div><div class="rel">devops/linux-bluetooth-audio</div></div>
+    <div class="card" data-cat="devops" data-name="sdlc-review"><div class="cname"><span class="n">sdlc-review</span></div><div class="d">Review Kanban handoffs and route verified outcomes.</div><div class="rel">devops/sdlc-review</div></div>
+    <div class="card" data-cat="devops" data-name="ssh-remote-access"><div class="cname"><span class="n">ssh-remote-access</span></div><div class="d">Use when setting up or running SSH to reach remote machines.</div><div class="rel">devops/ssh-remote-access</div></div>
+    <div class="card" data-cat="email" data-name="email-inbox-triage"><div class="cname"><span class="n">email-inbox-triage</span></div><div class="d">Triage an inbox: prioritize threads, draft replies safely.</div><div class="rel">email/email-inbox-triage</div></div>
+    <div class="card" data-cat="email" data-name="himalaya"><div class="cname"><span class="n">himalaya</span></div><div class="d">Himalaya CLI: IMAP/SMTP email from terminal.</div><div class="rel">email/himalaya</div></div>
+    <div class="card" data-cat="media" data-name="gif-search"><div class="cname"><span class="n">gif-search</span></div><div class="d">Search/download GIFs from Tenor via curl + jq.</div><div class="rel">media/gif-search</div></div>
+    <div class="card" data-cat="media" data-name="songsee"><div class="cname"><span class="n">songsee</span></div><div class="d">Audio spectrograms/features (mel, chroma, MFCC) via CLI.</div><div class="rel">media/songsee</div></div>
+    <div class="card" data-cat="media" data-name="youtube-content"><div class="cname"><span class="n">youtube-content</span></div><div class="d">YouTube transcripts to summaries, threads, blogs.</div><div class="rel">media/youtube-content</div></div>
+    <div class="card" data-cat="media" data-name="youtube-style-replication"><div class="cname"><span class="n">youtube-style-replication</span></div><div class="d">Replicate a YouTube channel&#x27;s format and voice.</div><div class="rel">media/youtube-style-replication</div></div>
+    <div class="card" data-cat="note-taking" data-name="obsidian"><div class="cname"><span class="n">obsidian</span></div><div class="d">Read, search, create, and edit notes in the Obsidian vault.</div><div class="rel">note-taking/obsidian</div></div>
+    <div class="card" data-cat="pov-explainer-videos" data-name="pov-explainer-videos"><div class="cname"><span class="n">pov-explainer-videos</span></div><div class="d">POV life-story explainer scripts + faceless mascot videos.</div><div class="rel">pov-explainer-videos</div></div>
+    <div class="card" data-cat="prism-3way" data-name="prism-3way"><div class="cname"><span class="n">prism-3way</span></div><div class="d">Three orthogonal analyses (WHERE/WHEN/WHY) + synthesis.</div><div class="rel">prism-3way</div></div>
+    <div class="card" data-cat="prism-discover" data-name="prism-discover"><div class="cname"><span class="n">prism-discover</span></div><div class="d">Discover all analysis domains - obvious + non-obvious.</div><div class="rel">prism-discover</div></div>
+    <div class="card" data-cat="prism-full" data-name="prism-full"><div class="cname"><span class="n">prism-full</span></div><div class="d">Multi-pass structural analysis + adversarial self-check.</div><div class="rel">prism-full</div></div>
+    <div class="card" data-cat="prism-reflect" data-name="prism-reflect"><div class="cname"><span class="n">prism-reflect</span></div><div class="d">Analyzes an artifact + what the analysis concealed.</div><div class="rel">prism-reflect</div></div>
+    <div class="card" data-cat="productivity" data-name="aident-loadout"><div class="cname"><span class="n">aident-loadout</span></div><div class="d">Access external apps via the Aident Loadout CLI.</div><div class="rel">productivity/aident-loadout</div></div>
+    <div class="card" data-cat="productivity" data-name="airtable"><div class="cname"><span class="n">airtable</span></div><div class="d">Airtable REST API via curl.</div><div class="rel">productivity/airtable</div></div>
+    <div class="card" data-cat="productivity" data-name="box"><div class="cname"><span class="n">box</span></div><div class="d">Box manages cloud files, sharing, search, and metadata.</div><div class="rel">productivity/box</div></div>
+    <div class="card" data-cat="productivity" data-name="document-to-action-items"><div class="cname"><span class="n">document-to-action-items</span></div><div class="d">Extract cited obligations, deadlines, tasks from documents.</div><div class="rel">productivity/document-to-action-items</div></div>
+    <div class="card" data-cat="productivity" data-name="docx"><div class="cname"><span class="n">docx</span></div><div class="d">Create, read, edit, template, and review Word .docx files.</div><div class="rel">productivity/docx</div></div>
+    <div class="card" data-cat="productivity" data-name="google-workspace"><div class="cname"><span class="n">google-workspace</span></div><div class="d">Gmail, Calendar, Drive, Docs, Sheets via gws CLI or Python.</div><div class="rel">productivity/google-workspace</div></div>
+    <div class="card" data-cat="productivity" data-name="image-text-extraction"><div class="cname"><span class="n">image-text-extraction</span></div><div class="d">Use when an image needs text extraction via OCR.</div><div class="rel">productivity/image-text-extraction</div></div>
+    <div class="card" data-cat="productivity" data-name="maps"><div class="cname"><span class="n">maps</span></div><div class="d">Geocode, POIs, routes, timezones via OpenStreetMap/OSRM.</div><div class="rel">productivity/maps</div></div>
+    <div class="card" data-cat="productivity" data-name="meeting-action-items"><div class="cname"><span class="n">meeting-action-items</span></div><div class="d">Turn meeting notes into cited decisions, owners, tickets.</div><div class="rel">productivity/meeting-action-items</div></div>
+    <div class="card" data-cat="productivity" data-name="notion"><div class="cname"><span class="n">notion</span></div><div class="d">Notion API + ntn CLI: pages, databases, markdown, Workers.</div><div class="rel">productivity/notion</div></div>
+    <div class="card" data-cat="productivity" data-name="pdf"><div class="cname"><span class="n">pdf</span></div><div class="d">PDF files: create, read, merge, fill, OCR, edit text.</div><div class="rel">productivity/pdf</div></div>
+    <div class="card" data-cat="productivity" data-name="powerpoint"><div class="cname"><span class="n">powerpoint</span></div><div class="d">Create, read, edit .pptx decks with python-pptx.</div><div class="rel">productivity/powerpoint</div></div>
+    <div class="card" data-cat="productivity" data-name="product-price-monitor"><div class="cname"><span class="n">product-price-monitor</span></div><div class="d">Watch product, flight, or listing prices; alert on target.</div><div class="rel">productivity/product-price-monitor</div></div>
+    <div class="card" data-cat="productivity" data-name="teams-meeting-pipeline"><div class="cname"><span class="n">teams-meeting-pipeline</span></div><div class="d">Teams meeting summaries, job replay, Graph subscriptions.</div><div class="rel">productivity/teams-meeting-pipeline</div></div>
+    <div class="card" data-cat="productivity" data-name="weekly-review-planning"><div class="cname"><span class="n">weekly-review-planning</span></div><div class="d">Weekly reset: commitments, stalled work, next-week plan.</div><div class="rel">productivity/weekly-review-planning</div></div>
+    <div class="card" data-cat="productivity" data-name="xlsx"><div class="cname"><span class="n">xlsx</span></div><div class="d">Create, read, edit Excel .xlsx workbooks and CSVs.</div><div class="rel">productivity/xlsx</div></div>
+    <div class="card" data-cat="requesting-code-review" data-name="requesting-code-review"><div class="cname"><span class="n">requesting-code-review</span></div><div class="d">Verify work meets requirements before merging or completing.</div><div class="rel">requesting-code-review</div></div>
+    <div class="card" data-cat="research" data-name="arxiv"><div class="cname"><span class="n">arxiv</span></div><div class="d">Search arXiv papers by keyword, author, category, or ID.</div><div class="rel">research/arxiv</div></div>
+    <div class="card" data-cat="research" data-name="competitor-news-monitor"><div class="cname"><span class="n">competitor-news-monitor</span></div><div class="d">Watch named companies for material news; cited digests.</div><div class="rel">research/competitor-news-monitor</div></div>
+    <div class="card" data-cat="research" data-name="grounded-citations"><div class="cname"><span class="n">grounded-citations</span></div><div class="d">Ground answers and documents in cited, verifiable sources.</div><div class="rel">research/grounded-citations</div></div>
+    <div class="card" data-cat="research" data-name="llm-wiki"><div class="cname"><span class="n">llm-wiki</span></div><div class="d">Karpathy&#x27;s LLM Wiki: build/query interlinked markdown KB.</div><div class="rel">research/llm-wiki</div></div>
+    <div class="card" data-cat="research" data-name="rss-feeds"><div class="cname"><span class="n">rss-feeds</span></div><div class="d">Read RSS, Atom, JSON feeds; discover feeds behind a page.</div><div class="rel">research/rss-feeds</div></div>
+    <div class="card" data-cat="security" data-name="godmode"><div class="cname"><span class="n">godmode</span></div><div class="d">Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN.</div><div class="rel">security/godmode</div></div>
+    <div class="card" data-cat="social-media" data-name="reddit-reading"><div class="cname"><span class="n">reddit-reading</span></div><div class="d">Read Reddit: subreddits, search, threads, users.</div><div class="rel">social-media/reddit-reading</div></div>
+    <div class="card" data-cat="social-media" data-name="xurl"><div class="cname"><span class="n">xurl</span></div><div class="d">X/Twitter via xurl CLI: raw post search, posting, DM, media.</div><div class="rel">social-media/xurl</div></div>
+    <div class="card" data-cat="software-development" data-name="api-retry"><div class="cname"><span class="n">api-retry</span></div><div class="d">API error?</div><div class="rel">software-development/api-retry</div></div>
+    <div class="card" data-cat="software-development" data-name="arch-system-cleanup"><div class="cname"><span class="n">arch-system-cleanup</span></div><div class="d">Use when freeing disk space or cleaning caches on Arch.</div><div class="rel">software-development/arch-system-cleanup</div></div>
+    <div class="card" data-cat="software-development" data-name="codebase-inspection"><div class="cname"><span class="n">codebase-inspection</span></div><div class="d">Inspect codebases w/ pygount: LOC, languages, ratios.</div><div class="rel">software-development/codebase-inspection</div></div>
+    <div class="card" data-cat="software-development" data-name="dogfood"><div class="cname"><span class="n">dogfood</span></div><div class="d">Exploratory QA of web apps: find bugs, evidence, reports.</div><div class="rel">software-development/dogfood</div></div>
+    <div class="card" data-cat="software-development" data-name="github"><div class="cname"><span class="n">github</span></div><div class="d">GitHub via gh CLI: PRs, issues, reviews, repos, auth.</div><div class="rel">software-development/github</div></div>
+    <div class="card" data-cat="software-development" data-name="hermes-agent-skill-authoring"><div class="cname"><span class="n">hermes-agent-skill-authoring</span></div><div class="d">Author in-repo SKILL.md files: frontmatter and structure.</div><div class="rel">software-development/hermes-agent-skill-authoring</div></div>
+    <div class="card" data-cat="software-development" data-name="inspecting-hermes-desktop-dom"><div class="cname"><span class="n">inspecting-hermes-desktop-dom</span></div><div class="d">Read the live Hermes desktop DOM/CSS over CDP.</div><div class="rel">software-development/inspecting-hermes-desktop-dom</div></div>
+    <div class="card" data-cat="software-development" data-name="node-inspect-debugger"><div class="cname"><span class="n">node-inspect-debugger</span></div><div class="d">Debug Node.js via --inspect + Chrome DevTools Protocol CLI.</div><div class="rel">software-development/node-inspect-debugger</div></div>
+    <div class="card" data-cat="software-development" data-name="npm-native-builds"><div class="cname"><span class="n">npm-native-builds</span></div><div class="d">Use when an npm native binding (sharp) fails to build.</div><div class="rel">software-development/npm-native-builds</div></div>
+    <div class="card" data-cat="software-development" data-name="pre-commit-review"><div class="cname"><span class="n">pre-commit-review</span></div><div class="d">Pre-commit review: security scan, quality gates, auto-fix.</div><div class="rel">software-development/pre-commit-review</div></div>
+    <div class="card" data-cat="software-development" data-name="python-debugpy"><div class="cname"><span class="n">python-debugpy</span></div><div class="d">Debug Python: pdb REPL + debugpy remote (DAP).</div><div class="rel">software-development/python-debugpy</div></div>
+    <div class="card" data-cat="software-development" data-name="rofi-desktop-menus"><div class="cname"><span class="n">rofi-desktop-menus</span></div><div class="d">Use when building or fixing rofi launcher menus on Linux.</div><div class="rel">software-development/rofi-desktop-menus</div></div>
+    <div class="card" data-cat="software-development" data-name="simplify-code"><div class="cname"><span class="n">simplify-code</span></div><div class="d">Parallel 4-agent cleanup of recent code changes.</div><div class="rel">software-development/simplify-code</div></div>
+    <div class="card" data-cat="software-development" data-name="spike"><div class="cname"><span class="n">spike</span></div><div class="d">Throwaway experiments to validate an idea before build.</div><div class="rel">software-development/spike</div></div>
+    <div class="card" data-cat="software-development" data-name="systematic-debugging"><div class="cname"><span class="n">systematic-debugging</span></div><div class="d">4-phase root cause debugging: understand bugs before fixing.</div><div class="rel">software-development/systematic-debugging</div></div>
+    <div class="card" data-cat="software-development" data-name="test-driven-development"><div class="cname"><span class="n">test-driven-development</span></div><div class="d">TDD: enforce RED-GREEN-REFACTOR, tests before code.</div><div class="rel">software-development/test-driven-development</div></div>
+    <div class="card" data-cat="using-superpowers" data-name="using-superpowers"><div class="cname"><span class="n">using-superpowers</span></div><div class="d">Use when starting a conversation - find and use skills.</div><div class="rel">using-superpowers</div></div>
+    <div class="card" data-cat="web" data-name="blocked-page-recovery"><div class="cname"><span class="n">blocked-page-recovery</span></div><div class="d">Use when a fetch fails: 403/429, paywall, WAF, bot wall.</div><div class="rel">web/blocked-page-recovery</div></div>
+    <div class="card" data-cat="web" data-name="hermes-browser-exec"><div class="cname"><span class="n">hermes-browser-exec</span></div><div class="d">Use when driving Hermes browser_exec: launch/connect/login.</div><div class="rel">web/hermes-browser-exec</div></div>
+    <div class="card" data-cat="web" data-name="static-site-deployment"><div class="cname"><span class="n">static-site-deployment</span></div><div class="d">Use when deploying a static site free via Hermes MCP.</div><div class="rel">web/static-site-deployment</div></div>
+    <div class="card" data-cat="web" data-name="web-mode"><div class="cname"><span class="n">web-mode</span></div><div class="d">Use when building websites.</div><div class="rel">web/web-mode</div></div>
   </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>Get started</h2>
-    <p class="lead">Clone once, deploy into any Hermes agent.</p>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;font-family:var(--mono);font-size:.9rem;overflow-x:auto">
-<pre style="white-space:pre">git clone https://github.com/hanyxd/hany-skills.git
-mkdir -p ~/.hermes/skills
-cp -r hany-skills/skills/* ~/.hermes/skills/</pre>
-    </div>
-  </div>
-</section>
-
+  <div class="empty hide" id="empty">No skills match your filters.</div>
+</main>
 <footer>
-  <div class="wrap">
-    <p><a href="https://github.com/hanyxd/hany-skills">hany-skills</a> · MIT · Built with the <code>web-mode</code> skill</p>
-  </div>
+  <div class="wrap">Hermes Skill Library — auto-generated by <code>scripts/gen-docs.py</code>. ·
+    <a href="https://github.com/hanyxd/hany-skills">GitHub</a></div>
 </footer>
-
+<script>
+  const grid=document.getElementById('grid'),empty=document.getElementById('empty'),
+        q=document.getElementById('q'),cat=document.getElementById('cat'),hideV=document.getElementById('hideVend');
+  function apply(){
+    const qv=q.value.trim().toLowerCase();
+    const cv=cat.value;
+    let shown=0;
+    for(const card of grid.children){
+      const name=card.dataset.name, desc=card.querySelector('.d').textContent.toLowerCase();
+      const c=card.dataset.cat, vend=!!card.querySelector('.t');
+      const okQ=!qv || name.includes(qv) || desc.includes(qv);
+      const okC=!cv || c===cv;
+      const okV=!(hideV.checked && vend);
+      const show=okQ&&okC&&okV;
+      card.classList.toggle('hide',!show);
+      if(show) shown++;
+    }
+    empty.classList.toggle('hide',shown>0);
+  }
+  [q,cat,hideV].forEach(el=>el.addEventListener('input',apply));
+  apply();
+</script>
 </body>
 </html>

@@ -18,10 +18,16 @@ jobs:
           python-version: "3.12"
       - name: Install PyYAML
         run: pip install pyyaml
-      - name: Check catalog matches disk
+      - name: Check generated docs match disk
         run: |
           python3 scripts/gen-catalog.py
-          git diff --exit-code docs/CATALOG.md \
-            || { echo "docs/CATALOG.md is stale. Run scripts/gen-catalog.py and commit the update."; exit 1; }
+          python3 scripts/gen-docs.py
+          git diff --exit-code docs/CATALOG.md docs/index.html \
+            || { echo "docs are stale. Run scripts/gen-catalog.py and scripts/gen-docs.py and commit the updates."; exit 1; }
       - name: Run structural validator
         run: python3 scripts/validate-skills.py
+      - name: Installer must pass a dry-run of every install mode
+        run: |
+          ./install.sh -n --curated >/dev/null || { echo "install.sh --curated dry-run failed"; exit 1; }
+          ./install.sh -n --all >/dev/null || { echo "install.sh --all dry-run failed"; exit 1; }
+          ./install.sh list >/dev/null || { echo "install.sh list failed"; exit 1; }

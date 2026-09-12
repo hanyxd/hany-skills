@@ -1,6 +1,6 @@
 ---
 name: prism-discover
-description: "Discover all possible analysis domains for an artifact. Finds obvious and non-obvious angles — architecture, security, but also marketing positioning, user psychology, regulatory implications, teaching value. Use before prism-scan or prism-full to explore what's worth investigating."
+description: "Discover all analysis domains - obvious + non-obvious."
 version: 1.0.0
 author: Cranot
 license: MIT

@@ -5,6 +5,15 @@ Every skill dir with a SKILL.md becomes a row under its category. The header,
 category counts, and skill rows are all derived from disk, so they can never
 drift again.
 
+Handles both category-level skills (skills/web/web-mode/SKILL.md) and skills
+that live AT a category root (skills/requesting-code-review/SKILL.md).
+
+The description column is ALWAYS the trimmed, ≤60-char first sentence (see
+skill_desc()): long descriptions lose routing signal past ~60 chars, so the
+index shows the same first-line the router would see, not a truncated blob.
+Vendored third-party skills (claude-code-imports/) are labeled with a
+[t] (third-party) tag so curated vs vendored is visible at a glance.
+
 Run:  python3 scripts/gen-catalog.py   (writes docs/CATALOG.md)
 """
 import os
@@ -15,60 +24,95 @@ import yaml
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKILLS = os.path.join(ROOT, "skills")
 OUT = os.path.join(ROOT, "docs", "CATALOG.md")
+VENDORED = "claude-code-imports"
+
+
+def read_desc(path):
+    """Return the raw frontmatter description, or '' if unreadable."""
+    text = open(path, encoding="utf-8", errors="replace").read()
+    m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+    if not m:
+        return ""
+    try:
+        return str(yaml.safe_load(m.group(1)).get("description", "")).strip()
+    except Exception:
+        return ""
+
+
+def skill_desc(path):
+    """The catalog description: first sentence, collapsed, capped at 60 chars.
+
+    Mirrors how the skill router consumes a description — past ~60 chars the
+    signal is truncated, so show the same lead the agent would actually read,
+    and never ship a mid-sentence hard cut.
+    """
+    raw = read_desc(path)
+    raw = re.sub(r"\s+", " ", raw).strip()
+    if not raw:
+        return "*(no description)*"
+    # first sentence, but don't cut mid-clause: take up to first '. ' or ' — '
+    first = re.split(r"(?<=[.!?])\s+", raw, maxsplit=1)[0]
+    if len(first) > 60:
+        return first[:57] + "..."
+    return first
 
 
 def collect():
+    """Return {category: [(name, trimmed_desc), ...]} and the true SKILL.md count.
+
+    A skill is any directory (category-level or nested) with a SKILL.md. A
+    category-level skill (e.g. skills/prism-3way/SKILL.md) is listed under a
+    single-item synthetic category named after itself. This must agree exactly
+    with validate-skills.py's skill_dirs() and right-size the header count.
+    """
     cats = {}
+    total = 0
+    seen_dirs = set()
     for cat in sorted(os.listdir(SKILLS)):
-        cp = os.path.join(SKILLS, cat)
-        if not os.path.isdir(cp):
+        cap = os.path.join(SKILLS, cat)
+        if not os.path.isdir(cap):
             continue
         items = []
-        # category-level skill dirs
-        for d in sorted(os.listdir(cp)):
-            p = os.path.join(cp, d)
+        for d in sorted(os.listdir(cap)):
+            p = os.path.join(cap, d)
             if os.path.isdir(p) and os.path.isfile(os.path.join(p, "SKILL.md")):
-                text = open(os.path.join(p, "SKILL.md"), encoding="utf-8").read()
-                m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
-                desc = ""
-                if m:
-                    try:
-                        desc = yaml.safe_load(m.group(1)).get("description", "")
-                    except Exception:
-                        desc = ""
-                items.append((d, str(desc).strip()))
-        # category-level SKILL.md (skill not in its own subdir)
-        if os.path.isfile(os.path.join(cp, "SKILL.md")):
-            text = open(os.path.join(cp, "SKILL.md"), encoding="utf-8").read()
-            m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
-            desc = ""
-            if m:
-                try:
-                    desc = yaml.safe_load(m.group(1)).get("description", "")
-                except Exception:
-                    desc = ""
-            items.append((cat, str(desc).strip()))
+                items.append((d, skill_desc(os.path.join(p, "SKILL.md"))))
+                seen_dirs.add(p)
+                total += 1
+        if os.path.isfile(os.path.join(cap, "SKILL.md")):
+            items.append((cat, skill_desc(os.path.join(cap, "SKILL.md"))))
+            seen_dirs.add(cap)
+            total += 1
         if items:
             cats[cat] = items
-    return cats
+    return cats, total, seen_dirs
+
+
+def vendor_tag(cat, name):
+    if cat == VENDORED:
+        return " `[t]`"
+    # nested vendored categories sit under claude-code-imports/<subcat>
+    if cat.startswith(VENDORED + "/"):
+        return " `[t]`"
+    return ""
 
 
 def main():
-    cats = collect()
-    # count unique SKILL.md files (not rows): duplicated names count once
-    nfiles = 0
-    for root, _dirs, fs in os.walk(SKILLS):
-        if "SKILL.md" in fs:
-            nfiles += 1
-    total = nfiles
+    cats, total, _seen = collect()
     ncats = len(cats)
     out = []
     out.append("# Skill Catalog")
     out.append("")
-    out.append(f"**{total} skills** across {ncats} categories, version-controlled for backup "
-               "and portability.")
+    out.append(
+        f"**{total} skills** across {ncats} categories, version-controlled for "
+        "backup and portability."
+    )
     out.append("")
-    out.append("> This file is auto-generated by `scripts/gen-catalog.py`. Do not edit by hand.")
+    out.append(
+        f"> This file is auto-generated by `scripts/gen-catalog.py`. Do not edit "
+        f"by hand. Descriptions are trimmed to the first ≤60-char sentence "
+        f"(`[t]` = third-party vendored skill under `{VENDORED}/`)."
+    )
     out.append("")
     for cat, items in sorted(cats.items()):
         out.append(f"## {cat} — {len(items)}")
@@ -76,9 +120,8 @@ def main():
         out.append("| Skill | What it does |")
         out.append("|---|---|")
         for name, desc in items:
-            # collapse newlines/spaces inside a single row
-            desc = re.sub(r"\s+", " ", desc)
-            out.append(f"| `{name}` | {desc} |")
+            tag = vendor_tag(cat, name)
+            out.append(f"| `{name}`{tag} | {desc} |")
         out.append("")
     open(OUT, "w", encoding="utf-8").write("\n".join(out))
     print(f"Wrote {OUT}: {total} skills across {ncats} categories.")

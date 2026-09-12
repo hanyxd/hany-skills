@@ -1,6 +1,6 @@
 ---
 name: prism-reflect
-description: "Constraint transparency: analyzes an artifact structurally, then analyzes what its own analysis concealed. Produces a conservation law AND a constraint report showing what was maximized, what was sacrificed, and what to investigate next. The only AI skill that knows what it can't see."
+description: "Analyzes an artifact + what the analysis concealed."
 version: 1.0.0
 author: Cranot
 license: MIT
